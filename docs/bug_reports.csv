@@ -1,0 +1,2 @@
+ID,Title,Severity,Priority,Steps to Reproduce,Expected,Actual,Status
+BUG-001,Login button unresponsive,Critical,High,"1. Open login page 2. Click Login","User should log in","Nothing happens",Open
