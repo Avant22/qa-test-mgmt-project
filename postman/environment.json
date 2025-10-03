@@ -1,0 +1,11 @@
+{
+  "id": "qa-env",
+  "name": "QA Env",
+  "values": [
+    {
+      "key": "baseUrl",
+      "value": "https://fakestoreapi.com",
+      "enabled": true
+    }
+  ]
+}

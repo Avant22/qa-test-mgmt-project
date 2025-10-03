@@ -1,2 +1,5 @@
 ID,Title,Severity,Priority,Steps to Reproduce,Expected,Actual,Status
-BUG-001,Login button unresponsive,Critical,High,"1. Open login page 2. Click Login","User should log in","Nothing happens",Open
+BUG-001,Login button unresponsive,Critical,High,"1. Open login page 2. Click Login","User logs in","Button does nothing",Open
+BUG-002,Checkout total incorrect,High,Medium,"1. Add items 2. Proceed to checkout","Total = sum of items","Total miscalculated",In Progress
+BUG-003,Error messages vanish too quickly,Low,Low,"1. Enter invalid login 2. Observe error","Message should persist","Disappears after 1s",Open
+BUG-004,Cart total not updating,High,Medium,"1. Add 2 items 2. Remove 1 during checkout","Total updates","Old total shown",Open

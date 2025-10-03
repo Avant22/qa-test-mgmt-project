@@ -9,13 +9,46 @@
       "request": {
         "method": "GET",
         "url": {
-          "raw": "https://fakestoreapi.com/products",
-          "protocol": "https",
-          "host": ["fakestoreapi","com"],
+          "raw": "{{baseUrl}}/products",
+          "host": ["{{baseUrl}}"],
           "path": ["products"]
         }
-      },
-      "response": []
+      }
+    },
+    {
+      "name": "Login - Valid",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"username\": \"user1\", \"password\": \"password123\" }"
+        },
+        "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth","login"] }
+      }
+    },
+    {
+      "name": "Login - Invalid",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"username\": \"user1\", \"password\": \"wrongpass\" }"
+        },
+        "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth","login"] }
+      }
+    },
+    {
+      "name": "Get Cart",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/carts/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["carts","1"]
+        }
+      }
     }
   ]
 }
