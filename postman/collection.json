@@ -1,0 +1,21 @@
+{
+  "info": {
+    "name": "QA Project API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Products",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "https://fakestoreapi.com/products",
+          "protocol": "https",
+          "host": ["fakestoreapi","com"],
+          "path": ["products"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
