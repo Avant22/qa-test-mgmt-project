@@ -10,7 +10,7 @@ jobs:
   selenium-tests:
     runs-on: ubuntu-latest
     env:
-      CI: true   # Ensures tests run only in CI
+      CI: true
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -28,7 +28,7 @@ jobs:
         run: pytest --alluredir=allure-results
 
       - name: Upload Allure results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: allure-results
           path: allure-results
@@ -53,7 +53,7 @@ jobs:
         run: newman run postman/collection.json -r cli,html --reporter-html-export newman_report.html
 
       - name: Upload Newman report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: newman-report
           path: newman_report.html
