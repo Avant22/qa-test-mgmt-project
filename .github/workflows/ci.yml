@@ -9,51 +9,33 @@ on:
 jobs:
   selenium-tests:
     runs-on: ubuntu-latest
-    env:
-      CI: true
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Setup Python
-        uses: actions/setup-python@v4
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: "3.12"
-
-      - name: Install Python dependencies
-        run: |
-          pip install -r requirements.txt
-
-      - name: Run Selenium tests (Pytest + Allure)
-        run: pytest --alluredir=allure-results
-
-      - name: Upload Allure results
-        uses: actions/upload-artifact@v4
+      - run: pip install -r requirements.txt
+      - run: pytest --alluredir=allure-results
+      - uses: actions/upload-artifact@v4
         with:
           name: allure-results
           path: allure-results
+      - uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: screenshots
 
   postman-tests:
     runs-on: ubuntu-latest
-    env:
-      CI: true
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: '18'
-
-      - name: Install Newman
-        run: npm install -g newman newman-reporter-html
-
-      - name: Run Postman collection with Newman
-        run: newman run postman/collection.json -r cli,html --reporter-html-export newman_report.html
-
-      - name: Upload Newman report
-        uses: actions/upload-artifact@v4
+          node-version: 18
+      - run: npm install -g newman newman-reporter-html
+      - name: Run Postman tests
+        run: newman run postman/collection.json -e postman/environment.json -r cli,html --reporter-html-export newman_report.html
+      - uses: actions/upload-artifact@v4
         with:
           name: newman-report
           path: newman_report.html
