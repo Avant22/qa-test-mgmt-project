@@ -1,6 +1,10 @@
-import pytest
+import pytest, os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+
+@pytest.fixture(scope="session", autouse=True)
+def ensure_screenshots_dir():
+    os.makedirs("screenshots", exist_ok=True)
 
 @pytest.fixture
 def browser():
@@ -10,7 +14,6 @@ def browser():
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=1920,1080")
-    options.add_argument("--disable-features=VizDisplayCompositor")
     driver = webdriver.Chrome(options=options)
     yield driver
     driver.quit()
